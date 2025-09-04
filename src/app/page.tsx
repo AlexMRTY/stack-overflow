@@ -1,9 +1,7 @@
-
-export default function Home () {
-  console.log('Hello, Next.js!')
+export default function Home() {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">Hello, Next.js!</h1>
+      <h1 className="h1-bold">Hello, Next.js! right</h1>
     </div>
-  )
+  );
 }
