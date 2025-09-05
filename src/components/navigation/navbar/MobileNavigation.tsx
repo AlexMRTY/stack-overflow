@@ -6,11 +6,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/src/components/ui/sheet";
-import { Button } from "@/src/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import ROUTES from "@/src/app/constants/routes";
 import NavLinks from "@/src/components/navigation/navbar/NavLinks";
+import NavAuthButtons from "@/src/components/navigation/navbar/NavAuthButtons";
+import ROUTES from "@/src/app/constants/routes";
+import { Button } from "../../ui/button";
 
 const MobileNavigation = () => {
   return (
@@ -43,30 +44,14 @@ const MobileNavigation = () => {
           </p>
         </Link>
 
-        <div className="no-scrollbar flex h-[calc(100vh-80px)] flex-col justify-between overflow-y-auto">
+        <div className="no-scrollbar flex h-[calc(100vh-80px)] flex-col justify-between gap-2 overflow-y-auto">
           <SheetClose asChild>
             <section className="flex h-full flex-col gap-6 pt-16">
               <NavLinks isMobileNav />
             </section>
           </SheetClose>
 
-          <div className="flex flex-col gap-3">
-            <SheetClose asChild>
-              <Link href={ROUTES.SIGN_IN}>
-                <Button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
-                  <span className="primary-text-gradient">Log In</span>
-                </Button>
-              </Link>
-            </SheetClose>
-
-            <SheetClose asChild>
-              <Link href={ROUTES.SIGN_UP}>
-                <Button className="small-medium light-border-2 btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg border px-4 py-3 shadow-none">
-                  Sign Up
-                </Button>
-              </Link>
-            </SheetClose>
-          </div>
+          <NavAuthButtons isSheet isMobileNav />
         </div>
       </SheetContent>
       {/* </div> */}

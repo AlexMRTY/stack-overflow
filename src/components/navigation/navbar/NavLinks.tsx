@@ -12,7 +12,7 @@ const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
   const pathname = usePathname();
   const userId = 1;
   return (
-    <>
+    <div>
       {sidebarLinks.map((item) => {
         const isActive =
           (pathname.includes(item.route) && item.route.length > 1) ||
@@ -44,10 +44,11 @@ const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
             <p
               className={cn(
                 isActive ? "base-bold" : "base-medium",
-                !isMobileNav && "max-lg-hidden"
+                !isMobileNav && "max-lg:hidden"
               )}
-            ></p>
-            <p>{item.label}</p>
+            >
+              {item.label}
+            </p>
           </Link>
         );
 
@@ -59,7 +60,7 @@ const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
           <React.Fragment key={item.route}>{LinkComponent}</React.Fragment>
         );
       })}
-    </>
+    </div>
   );
 };
 
