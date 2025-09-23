@@ -5,7 +5,7 @@ import LocalSearch from "@/src/components/search/LocalSearch";
 import HomeFilter from "@/src/components/filters/HomeFilter";
 import QuestionCard from "@/src/components/cards/QuestionCard";
 
-const mockQuestions = [
+const mockQuestions: Array<Question> = [
   {
     _id: "1",
     title: "How to learn React?",
@@ -18,7 +18,7 @@ const mockQuestions = [
     upvotes: 10,
     answers: 2,
     views: 100,
-    createdAt: new Date(),
+    createdAt: new Date("2023-10-01T10:00:00Z"),
   },
   {
     _id: "2",
@@ -29,7 +29,7 @@ const mockQuestions = [
     upvotes: 5,
     answers: 1,
     views: 50,
-    createdAt: new Date(),
+    createdAt: new Date("2023-10-02T12:00:00Z"),
   },
 ];
 
@@ -82,7 +82,7 @@ export default async function Home({ searchParams }: SearchParams) {
         ) : (
           <ul className="flex flex-col gap-6">
             {filteredQuestions.map((question) => (
-              <QuestionCard question={question} />
+              <QuestionCard key={question._id} question={question} />
             ))}
           </ul>
         )}
