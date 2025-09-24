@@ -1,15 +1,4 @@
-import { model, models, Schema } from "mongoose";
-
-export interface IUser {
-  name: string;
-  email: string;
-  userName: string;
-  bio?: string;
-  image: string;
-  location?: string;
-  portfolio?: string;
-  reputation?: number;
-}
+import { InferSchemaType, model, models, Schema } from "mongoose";
 
 const UserSchema = new Schema(
   {
@@ -25,6 +14,7 @@ const UserSchema = new Schema(
   { timestamps: true }
 );
 
-const User = models?.user || model<IUser>("User", UserSchema);
+type IUser = InferSchemaType<typeof UserSchema>;
+const User = models?.User || model<IUser>("User", UserSchema);
 
 export default User;
