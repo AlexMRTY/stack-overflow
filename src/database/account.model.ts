@@ -1,8 +1,19 @@
-import { InferSchemaType, model, models, Schema } from "mongoose";
+import { Schema, models, model, Document, Types } from "mongoose";
 
-const AccountSchema = new Schema(
+export interface IAccount {
+  user: Types.ObjectId;
+  name: string;
+  image?: string;
+  password?: string;
+  authProvider: "github" | "google";
+  authProviderAccountId: string;
+}
+
+export interface IAccountDoc extends IAccount, Document {}
+
+const AccountSchema = new Schema<IAccount>(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
     name: { type: String, required: true },
     image: { type: String },
     password: { type: String },
@@ -12,7 +23,6 @@ const AccountSchema = new Schema(
   { timestamps: true }
 );
 
-type IAccount = InferSchemaType<typeof AccountSchema>;
 const Account = models?.Accounts || model<IAccount>("Account", AccountSchema);
 
 export default Account;

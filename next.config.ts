@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: ["xsgames.co"],
   },
+  serverExternalPackages: ["pino", "pino-pretty"],
 };
 
 export default nextConfig;
